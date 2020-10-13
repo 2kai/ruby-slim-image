@@ -1,6 +1,6 @@
 FROM ruby:2.4-slim-stretch
 
-LABEL maintainer="sasha klepikov <kai@list.ru>
+LABEL maintainer="sasha klepikov <kai@list.ru>"
 
 RUN chgrp -R root /usr/local
 
