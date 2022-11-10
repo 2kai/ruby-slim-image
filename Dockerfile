@@ -1,17 +1,8 @@
-FROM ruby:2.4-slim-stretch
+FROM ruby:2.4-slim-buster
 
 LABEL maintainer="sasha klepikov <kai@list.ru>"
 
 RUN chgrp -R root /usr/local
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        wget \
-        gpg
-
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list
-
-RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -20,7 +11,7 @@ RUN apt-get update \
         less \
         locales \
         pdftk \
-        openjdk-8-jre-headless \
+        openjdk-11-jre-headless \
         git \
         build-essential \
         libpq-dev \
@@ -31,6 +22,8 @@ RUN apt-get update \
         vim \
         imagemagick \
         libmagickwand-dev \
+        wget \
+        gpg \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
